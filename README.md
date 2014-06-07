@@ -13,3 +13,19 @@ Create a Python 3.4 virtualenv and install dependencies:
     $ pyvenv-3.4 .env
     $ source .env/bin/activate
     $ pip install -r requirements
+
+Running
+-------
+In order to start the webserver in development mode, set environment variable 
+`GEPETTO_ENV` to `dev`.
+    
+    $ export GEPETTO_ENV=dev
+    $ ./server.py
+
+Tests
+-----
+Tests are written using [py.test][1]. Run the test suite with:
+
+    $ py.test tests/
+
+[1]:http://pytest.org
