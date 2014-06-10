@@ -1,14 +1,13 @@
 import json
 from flask import Blueprint, abort, request
 
-#from tasks import set_pin
-#from utils import get_pin
+from app.tasks import set_pin
 
 router = Blueprint('gpio', __name__)
 
 
-@router.route('/<int:gpio_nr>/setpoint', methods=['POST'])
-def post_setpoint(gpio_nr):
+@router.route('/<int:pin_nr>/setpoint', methods=['POST'])
+def post_setpoint(pin_nr):
     """
 
     Enable or disable a GPIO pin.
@@ -46,19 +45,17 @@ def post_setpoint(gpio_nr):
 
     """
     try:
-        data = json.loads(request.data)
+        data = json.loads(request.data.decode('utf8'))
     except:
         abort(422)
 
     if 'value' not in data or data['value'] not in [0, 1]:
         abort(400)
 
-    try:
-        #pin = get_pin(gpio_nr)
-        pass
-    except KeyError:
+    # Raspberry Pi BOARD numbering has 25 pins.
+    if pin_nr not in range(1, 27):
         abort(404)
 
-    #set_pin(pin, data['value'])
+    set_pin(pin_nr, data['value'])
 
     return request.data
