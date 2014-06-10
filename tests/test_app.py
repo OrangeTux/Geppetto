@@ -2,6 +2,10 @@ import os
 
 try:
     from importlib import reload
+    try:
+        from imp import reload
+    except:
+        pass
 except ImportError:
     pass
 
