@@ -28,4 +28,15 @@ Tests are written using [py.test][1]. Run the test suite with:
 
     $ py.test tests/
 
+Documentation
+-------------
+The documentation is powered by [Sphinx][2] and can be build with:
+
+    $ sphinx-build -aE -b html docs docs/_build
+
+or with
+    
+    $ make -C docs html
+
 [1]:http://pytest.org
+[2]:http://sphinx-doc.org/
