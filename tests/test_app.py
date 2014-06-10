@@ -1,5 +1,12 @@
 import os
-from importlib import reload
+
+try:
+    from importlib import reload
+except ImportError:
+    try:
+        from imp import reload
+    except ImportError:
+        pass
 
 import app
 
