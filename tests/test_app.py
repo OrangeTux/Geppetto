@@ -2,12 +2,11 @@ import os
 
 try:
     from importlib import reload
+except ImportError:
     try:
         from imp import reload
-    except:
+    except ImportError:
         pass
-except ImportError:
-    pass
 
 import app
 
