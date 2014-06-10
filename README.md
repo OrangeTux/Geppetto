@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/OrangeTux/Gepetto.svg?branch=develop)](https://travis-ci.org/OrangeTux/Gepetto)
 Gepetto
 =======
 Gepetto is a home automation server. It's written for the Raspberry Pi but with
