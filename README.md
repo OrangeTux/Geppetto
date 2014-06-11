@@ -10,11 +10,16 @@ pins easily.
 
 Installation
 ------------
-Create a Python 3.4 virtualenv and install dependencies:
+Python runs with Python 2.7, 3.3 and 3.4. Create a virtualenv and install
+depencies:
 
     $ pyvenv-3.4 .env
     $ source .env/bin/activate
-    $ pip install -r requirements
+    $ pip install -r requirements.txt
+
+When installing Gepetto on your Raspberry Pi install ARM requirements also:
+
+    $ pip install -r arm_requirements.txt
 
 Running
 -------
