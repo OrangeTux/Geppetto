@@ -4,6 +4,14 @@ python:
   - "3.3"
   - "3.4"
 # command to install dependencies
-install: "pip install -r requirements.txt"
+install: 
+    - pip install -r requirements.txt
+before_script:
+    - pip install -r test_requirements.txt
+
 # command to run tests
-script: py.test
+script: 
+    - py.test tests -v --pep8 app -v --cov app --cov-report term-missing
+after_succes:
+    - coveralls
+
