@@ -12,6 +12,6 @@ before_script:
 # command to run tests
 script: 
     - py.test tests -v --pep8 app -v --cov app --cov-report term-missing
-after_succes:
+after_success:
     - coveralls
 
