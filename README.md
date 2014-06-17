@@ -21,6 +21,16 @@ When installing Gepetto on your Raspberry Pi install ARM requirements also:
 
     $ pip install -r arm_requirements.txt
 
+Create a database database and generate an API key:
+    
+    $ pynt setup_db
+    [ build.py - Starting task "setup_db" ]
+    [ build.py - Completed task "setup_db" ]
+    $ pynt create_api_key
+    [ build.py - Starting task "create_api_key" ]
+    An API key has been added to database: d0d41996-64d2-4171-a436-b295cb657368
+    [ build.py - Completed task "create_api_key" ]
+
 Running
 -------
 In order to start the webserver in development mode, set environment variable 
