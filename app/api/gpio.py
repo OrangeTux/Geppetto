@@ -1,5 +1,6 @@
 import json
 from flask import Blueprint, abort, request
+from flask.ext.login import login_required
 
 from app.tasks import set_pin
 
@@ -7,6 +8,7 @@ router = Blueprint('gpio', __name__)
 
 
 @router.route('/<int:pin_nr>/setpoint', methods=['POST'])
+@login_required
 def post_setpoint(pin_nr):
     """
 

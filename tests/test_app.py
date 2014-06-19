@@ -18,3 +18,8 @@ def test_app():
     os.environ['GEPETTO_ENV'] = 'dev'
     reload(app)
     assert app.app.debug is True
+
+
+def test_login(api_key, db_con):
+    """ Test login function. """
+    pass

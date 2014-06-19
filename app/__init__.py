@@ -18,9 +18,12 @@ login_manager.init_app(app)
 if 'GEPETTO_ENV' in os.environ and os.environ['GEPETTO_ENV'] == 'dev':
     app.debug = True
 
+if 'GEPETTO_ENV' in os.environ and os.environ['GEPETTO_ENV'] == 'test':
+    db_path = ':memory:'
+
 
 @login_manager.request_loader
-def login(request):
+def load_user_from_request(request):
     """ Grant user access to API or not.
 
     :param request: A Request instance.
