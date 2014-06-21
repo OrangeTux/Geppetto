@@ -16,5 +16,5 @@ class User(db.Model, UserMixin):
         :return: String.
 
         """
-        return '<User %d, api_key: %s>' %\
+        return '<User %s, api_key: %s>' %\
             (self.id if hasattr(self, 'id') else None, self.api_key)
