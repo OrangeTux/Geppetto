@@ -1,10 +1,12 @@
 Flask==0.10.1
 Flask-Admin==1.0.8
 Flask-Login==0.2.11
+Flask-SQLAlchemy==1.0
 Jinja2==2.7.3
 Logbook==0.7.0
 MarkupSafe==0.23
 Pygments==1.6
+SQLAlchemy==0.9.4
 Sphinx==1.2.2
 WTForms==2.0
 Werkzeug==0.9.6

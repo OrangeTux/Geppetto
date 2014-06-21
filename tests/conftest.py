@@ -3,44 +3,35 @@ import os
 os.environ['GEPETTO_ENV'] = 'test'
 
 import pytest
-import sqlite3
 from uuid import uuid4
 import base64
 
 from app import app as application
-from app import db_path
+from app import db
+from app.models import User
 
 
-def setup_db(con):
-    """ Create testing database. """
-    with con:
-        con.execute('CREATE TABLE api_key (key text)')
-
-
-@pytest.fixture
-def db_con():
-    """ Returns a database connection. """
-    con = sqlite3.connect(db_path)
-    setup_db(con)
-
-    return con
+@pytest.fixture(scope='module', autouse=True)
+def setup_db():
+    db.create_all()
 
 
 @pytest.fixture
-def api_key(db_con):
+def user():
     """ Add API key to db and return the key. """
     key = str(uuid4()).encode('utf-8')
 
-    with db_con:
-        db_con.execute("INSERT INTO api_key(key) VALUES (?)", (key,))
+    u = User(api_key=key)
+    db.session.add(u)
+    db.session.commit()
 
-    return key
+    return u
 
 
 @pytest.fixture
-def auth_header(api_key):
+def auth_header(user):
     """ Return Authorization header. """
-    return {'Authorization': base64.b64encode(api_key)}
+    return {'Authorization': base64.b64encode(user.api_key)}
 
 
 @pytest.fixture
