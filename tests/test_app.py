@@ -18,3 +18,4 @@ def test_app():
     os.environ['GEPETTO_ENV'] = 'dev'
     reload(app)
     assert app.app.debug is True
+    os.environ['GEPETTO_ENV'] = 'test'
