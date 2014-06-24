@@ -1,29 +1,30 @@
 #!/usr/bin/env python
 import os
-import sqlite3
+import sys
+
+_curpath = os.path.dirname(os.path.abspath(__name__))
+sys.path.append(_curpath)
+
 from pynt import task
 from uuid import uuid4
 
-_cur_path = os.path.dirname(os.path.abspath(__name__))
-db_path = os.path.join(_cur_path, 'data', 'gepetto.db')
+from app import db
+from app.models import User
 
 
 @task()
 def setup_db():
-    """ Setup Sqlite database. """
-    con = sqlite3.connect(db_path)
-
-    with con:
-        con.execute('CREATE TABLE api_keys (key text)')
+    """ Setup database. """
+    db.create_all()
 
 
 @task()
-def create_api_key():
+def create_user():
     """ Create API key and add it to database. """
-    con = sqlite3.connect(db_path)
-    key = uuid4()
+    key = str(uuid4()).encode('utf-8')
+    u = User(api_key=key)
 
-    with con:
-        con.execute("INSERT INTO api_keys(key) VALUES (?)", (str(key),))
+    db.session.add(u)
+    db.session.commit()
 
-    print('An API key has been added to database: %s' % key)
+    print('User %s has been created.' % u)

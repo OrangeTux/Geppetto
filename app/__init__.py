@@ -19,7 +19,7 @@ app.register_blueprint(gpio, url_prefix='/gpio')
 if 'GEPETTO_ENV' in os.environ and os.environ['GEPETTO_ENV'] == 'dev':
     app.debug = True
     app.config['SQLALCHEMY_DATABASE_URI'] = \
-        'sqlite:///%s/../data/gepetto_dev.db' % _cur_path
+        'sqlite:///%s/data/gepetto_dev.db' % _cur_path
 
 if 'GEPETTO_ENV' in os.environ and os.environ['GEPETTO_ENV'] == 'test':
     app.testing = True
@@ -40,7 +40,7 @@ def load_user_from_request(request):
     """
     key = request.headers.get('Authorization')
     if key:
-        key = key.replace('Basic', '', 1)
+        key = key.replace('Basic ', '', 1)
         try:
             key = base64.b64decode(key)
         except TypeError:
