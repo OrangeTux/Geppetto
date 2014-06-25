@@ -1,6 +1,13 @@
 Quickstart
 ==========
 
+This guide explains how to quickly run Geppetto.
+
+.. note::
+
+     Do not start Geppetto like this in a production environment! Running
+     Geppetto as root is dangerous!
+
 Download the source from GitHub and install the requirements.
 
 ::
