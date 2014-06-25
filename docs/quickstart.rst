@@ -55,7 +55,7 @@ interpreter. Use the API key generated earlier:
     >>> auth = {'Authorization': base64.b64encode('fcba99ca-3360-4683-a54d-1ce8ad1f20f3').encode('utf-8')}
     >>> # Create body of POST request.
     >>> data = json.dumps({'value': 1})
-    >>> # Do POST request
+    >>> # Do POST request.
     >>> requests.post('http://localhost:5000/gpio/15/setpoint', headers=auth, data=data)
     <Response [200]>
 
