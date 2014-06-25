@@ -14,11 +14,13 @@ tested with 2.7, 3.3 and 3.4. `Geppetto's source code`_ is distributed under a
 Geppetto is named after `Mister Geppetto`_, a character created by `Carlo
 Collodi`_ in his novel `The Adventures of Pinocchio`_.
 
-Contents:
+Contents
+--------
 
 .. toctree::
     :maxdepth: 2
    
+    quickstart
     gpio
 
 .. _GPIO pins: http://www.raspberrypi.org/documentation/hardware/raspberrypi/gpio.md
