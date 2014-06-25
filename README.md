@@ -26,10 +26,11 @@ Create a database database and generate an API key:
     $ pynt setup_db
     [ build.py - Starting task "setup_db" ]
     [ build.py - Completed task "setup_db" ]
-    $ pynt create_api_key
-    [ build.py - Starting task "create_api_key" ]
-    An API key has been added to database: d0d41996-64d2-4171-a436-b295cb657368
-    [ build.py - Completed task "create_api_key" ]
+    $ pynt create_user
+    [ build.py - Starting task "create_user" ]
+    User <User 1, api_key: b'fcba99ca-3360-4683-a54d-1ce8ad1f20f3'> has been created.
+    [ build.py - Completed task "create_user" ]
+
 
 Running
 -------
