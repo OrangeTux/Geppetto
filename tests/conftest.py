@@ -1,6 +1,6 @@
 import os
 
-os.environ['GEPETTO_ENV'] = 'test'
+os.environ['GEPPETTO_ENV'] = 'test'
 
 import pytest
 from uuid import uuid4

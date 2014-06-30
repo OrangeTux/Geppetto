@@ -1,25 +1,25 @@
-[![Build Status](https://travis-ci.org/OrangeTux/Gepetto.svg?branch=develop)](https://travis-ci.org/OrangeTux/Gepetto)
-[![Coverage Status](https://coveralls.io/repos/OrangeTux/Gepetto/badge.png)](https://coveralls.io/r/OrangeTux/Gepetto)
-Gepetto
+[![Build Status](https://travis-ci.org/OrangeTux/Geppetto.svg?branch=develop)](https://travis-ci.org/OrangeTux/Geppetto)
+[![Coverage Status](https://coveralls.io/repos/OrangeTux/Geppetto/badge.png)](https://coveralls.io/r/OrangeTux/Geppetto)
+Geppetto
 =======
-Gepetto is a home automation server. It's written for the Raspberry Pi but with
+Geppetto is a home automation server. It's written for the Raspberry Pi but with
 some small modification you should be able to run it on other devices with GPIO
-pins. Gepetto provides a REST API which let you control the GPIO pins of your
+pins. Geppetto provides a REST API which let you control the GPIO pins of your
 Raspberry Pi. Apps can be build on top of this API in order to control the GPIO
 pins easily.
 
 Installation
 ------------
-Python runs with Python 2.7, 3.3 and 3.4. Create a virtualenv and install
-depencies:
+Geppetto has been tested under Python 3.3 and Python 3.4. Geppetto uses 
+Quick2Wire's [gpio-admin][3] and its [Python wrapper][4]. The documentation of
+this wrapper says that it works with Python 3, but my experience is that it
+works well with Python 2.7 too.
 
     $ pyvenv-3.4 .env
     $ source .env/bin/activate
     $ pip install -r requirements.txt
 
-When installing Gepetto on your Raspberry Pi install ARM requirements also:
-
-    $ pip install -r arm_requirements.txt
+Install GPIO ADMIN by following the [installation instructions][5].
 
 Create a database database and generate an API key:
     
@@ -35,9 +35,9 @@ Create a database database and generate an API key:
 Running
 -------
 In order to start the webserver in development mode, set environment variable 
-`GEPETTO_ENV` to `dev`.
+`GEPPETTO_ENV` to `dev`.
     
-    $ export GEPETTO_ENV=dev
+    $ export GEPPETTO_ENV=dev
     $ ./server.py
 
 Tests
@@ -58,3 +58,6 @@ or with
 
 [1]:http://pytest.org
 [2]:http://sphinx-doc.org/
+[3]:https://github.com/quick2wire/quick2wire-gpio-admin
+[4]:https://github.com/quick2wire/quick2wire-python-api
+[5]:https://github.com/quick2wire/quick2wire-gpio-admin#installation

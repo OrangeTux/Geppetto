@@ -15,7 +15,7 @@ def test_app():
     """ Test configuration of app in different environment. """
     assert app.app.debug is False
 
-    os.environ['GEPETTO_ENV'] = 'dev'
+    os.environ['GEPPETTO_ENV'] = 'dev'
     reload(app)
     assert app.app.debug is True
-    os.environ['GEPETTO_ENV'] = 'test'
+    os.environ['GEPPETTO_ENV'] = 'test'
