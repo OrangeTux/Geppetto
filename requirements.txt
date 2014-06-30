@@ -14,7 +14,6 @@ itsdangerous==0.24
 py==1.4.20
 pynt==0.8.0
 pytest==2.5.2
-quick2wire-api==0.0.0.2
 requests==2.3.0
 six==1.7.2
 sphinxcontrib-httpdomain==1.2.1
