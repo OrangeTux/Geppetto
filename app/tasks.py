@@ -1,4 +1,4 @@
-from gpiocrust import Header, OutputPin
+from quick2wire.gpio import pins, Out
 from logbook import Logger
 
 log = Logger(__name__)
@@ -11,8 +11,9 @@ def set_pin(pin_nr, value):
     :param vaue: Value.
 
     """
-    with Header():
-        p = OutputPin(pin_nr, value=bool(value))
+    pin = pins.Pin(pin_nr, direction=Out)
+    with pin:
+        pin.value = int(value)
         log.debug('Wrote %d to pin %d.' % (value, pin_nr))
 
-        return p.value
+        return pin.value
