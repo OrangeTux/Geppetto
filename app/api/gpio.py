@@ -40,7 +40,7 @@ def post_setpoint(pin_nr):
     :reqheader Accept: application/json
     :reqheader Content-Type: application/json
     :resheader Content-Type: application/json
-    :statuscode 200: Succes
+    :statuscode 200: Success
     :statuscode 400: Request body is invalid.
     :statuscode 404: GPIO pin doesn't exists.
     :statuscode 422: Request body is not valid JSON.
@@ -54,10 +54,9 @@ def post_setpoint(pin_nr):
     if 'value' not in data or data['value'] not in [0, 1]:
         abort(400)
 
-    # Raspberry Pi BOARD numbering has 25 pins.
-    if pin_nr not in range(1, 27):
+    try:
+        set_pin(pin_nr, data['value'])
+    except IndexError:
         abort(404)
-
-    set_pin(pin_nr, data['value'])
 
     return request.data

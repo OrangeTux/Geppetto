@@ -1,4 +1,5 @@
 import json
+import pytest
 
 
 def test_post_setpoint_422(client, auth_header):
@@ -25,7 +26,8 @@ def test_post_setpoint_400(client, auth_header):
         assert res.status_code == 400
 
 
-def test_post_setpoint_404(client, auth_header):
+@pytest.mark.skipif('os.uname()[4][:3] != "arm"')
+def test_post_setpoint_404(client, auth_header, monkeypatch):
     """ Test for 404 response code. """
     with client as cl:
         res = cl.post('/gpio/29/setpoint',

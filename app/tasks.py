@@ -11,7 +11,8 @@ def set_pin(pin_nr, value):
     :param vaue: Value.
 
     """
-    pin = pins.Pin(pin_nr, direction=Out)
+    pin = pins.pin(pin_nr, direction=Out)
+
     with pin:
         pin.value = int(value)
         log.debug('Wrote %d to pin %d.' % (value, pin_nr))
