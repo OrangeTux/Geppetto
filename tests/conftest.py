@@ -27,6 +27,7 @@ def patch(monkeypatch, tmpdir):
         f.write(0)
         return f.strpath
 
+    monkeypatch.setattr('quick2wire.gpio.Pin._pin_path', mock_pin_path)
 
 @pytest.fixture
 def user():
