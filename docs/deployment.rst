@@ -28,7 +28,7 @@ Put the configuration below inside `/etc/nginx/sites-available/geppetto`.
       location @geppetto {
         include uwsgi_params;
         uwsgi_modifier1 30;
-        uwsgi_pass unix:/tmp/geppetto.sock;
+        uwsgi_pass unix:/var/www/geppetto/data/geppetto.sock;
       }
     }
 
@@ -66,7 +66,7 @@ Put the following configuration inside
     uid = www-data
     gid = www-data
     chmod-socket = 666
-    socket = /tmp/geppetto.sock
+    socket = /var/www/geppetto/data/geppetto.sock
     module = server
     callable = app
     virtualenv = /var/www/geppetto/.env
