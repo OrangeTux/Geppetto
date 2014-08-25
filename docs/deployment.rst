@@ -86,7 +86,7 @@ your virtualenv!
 
     $ cd /var/www/geppetto
     $ source .env/bin/activate
-    $ uwsgi --emperor /etc/uwsgi/sites-enabled --deamonize log/uwsgi.log
+    $ uwsgi --emperor /etc/uwsgi/sites-enabled --deamonize /var/www/geppetto/logs/uwsgi.log
 
 Congratulations, Geppetto is running on port 80 of your Raspberry Pi.
 
