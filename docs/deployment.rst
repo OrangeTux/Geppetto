@@ -2,7 +2,12 @@ Deployment
 ==========
 
 This section describes how to deploy Geppetto with `Nginx`_ and `uWSGI`_. You
-can use other web servers and other WSGI servers if you desire.
+can use other web servers and other WSGI servers if you desire. 
+
+.. note::
+
+    Throughout this page the location `/var/www/geppetto` is used. 
+    If you put Geppetto somewhere else, set correct path.
 
 Nginx
 -----
@@ -46,11 +51,12 @@ Restart Nginx.
     
 uWSGI
 -----
-uwgsi has been added as Python dependency in requirements.txt, but we also
+uWSGI has been added as Python dependency in requirements.txt, but we also
 install it system wide. Althought this is not necessarily required, this
-system wide installation copies some uwsgi configuration in the correct folders
-of Nginx. When running Gepppetto we use uWSGI installed inside the virtualenv.
-This version is newer that the one from the Debian repositories.
+system wide installation copies some uWSGI configuration in the correct folders
+of Nginx. When running Gepppetto we use uWSGI binary inside the virtualenv.
+The reason that we use this binary is that the version from PyPi is newer than
+the one from the Debian repositories.
 
 ::
 
@@ -86,7 +92,7 @@ your virtualenv!
 
     $ cd /var/www/geppetto
     $ source .env/bin/activate
-    $ uwsgi --emperor /etc/uwsgi/sites-enabled --deamonize /var/www/geppetto/logs/uwsgi.log
+    $ uwsgi --emperor /etc/uwsgi/sites-enabled --daemonize /var/www/geppetto/logs/uwsgi.log
 
 Congratulations, Geppetto is running on port 80 of your Raspberry Pi.
 

@@ -5,7 +5,7 @@ Usage
 
 Request
 -------
-The following example shows how to enable GPIO 15. When you run Geppetto in 
+The following example shows how to enable GPIO 3, or SOC GPIO 22. When you run Geppetto in 
 development mode the Authorization header redundant. Authentication has been
 disabled in development mode.
 
@@ -17,29 +17,7 @@ disabled in development mode.
     >>> # Create body of POST request.
     >>> data = json.dumps({'value': 1})
     >>> # Do POST request.
-    >>> requests.post('http://localhost:5000/gpio/15/setpoint', headers=auth, data=data)
+    >>> requests.post('http://localhost:5000/gpio/3/setpoint', headers=auth, data=data)
     <Response [200]>
-
-Docs
-----
-If you want to build the documentation you've to get the `Diaoul Sphinx theme`_
-. This Git repository has been added as submodule. Fetch the data:
-
-::
-
-    $ git submodule init
-    $ git submodule update
-
-The documenation can be build with:
-
-:: 
-
-    $ sphinx-build -aE -b html docs docs/_build
-
-or:
-
-::
-
-    $ make -C docs html
 
 .. _Diaoul Sphinx theme: https://github.com/Diaoul/diaoul-sphinx-thEmes

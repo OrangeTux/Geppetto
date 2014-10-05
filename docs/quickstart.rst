@@ -3,8 +3,8 @@ Quickstart
 
 .. note::
 
-    It is not safe to start Geppetto like this in a production environment.
     When running in development mode API authentication has been disabled.
+    It is not safe to start Geppetto like this in a production environment.
     
 Inside your virtualenv set the environmnent `GEPPETTO_ENV` and start the 
 server:
@@ -16,7 +16,5 @@ server:
     * Running on http://127.0.0.1:5000/
     * Restarting with reloader
 
-When the server is running do a POST request, for example from the Python 
-interpreter. Use the API key generated earlier:
-
-See :ref:`Usage` how to interact with API and how to toggle GPIO pins.
+Now you interact with the API on 127.0.0.1:5000. See :ref:`Usage` how 
+to use the API and how to toggle GPIO pins.

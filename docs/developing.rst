@@ -39,5 +39,8 @@ or:
 
     $ make -C docs html
 
+The documentation can be found at `docs/_build/html`.
+
+
 .. _Diaoul Sphinx theme: https://github.com/Diaoul/diaoul-sphinx-thEmes
 .. _pytest: http://pytest.org

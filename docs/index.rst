@@ -6,15 +6,14 @@
 Welcome to Geppetto
 ===================
 Welcome to Geppetto's documentation. Geppetto provides a simple and clean HTTP 
-REST API to interact with the GPIO with the `GPIO pins`_ of the 
-`Raspberry Pi`_. Both model A and B af the Raspberry Pi are supported. 
+REST API to interact the `GPIO pins`_ of the `Raspberry Pi`_. All models of the 
+Raspberry Pi are supported. 
 
-Geppetto is written in 
-Python and has been tested with 2.7, 3.3 and 3.4. `Geppetto's source code`_ is 
-distributed under a `MIT license`_.
+Geppetto is written in Python and has been tested with 2.7, 3.3 and 3.4. 
+`Geppetto's source code`_ is distributed under a `MIT license`_.
 
 Geppetto is named after `Mister Geppetto`_, a character created by `Carlo
-Collodi`_ in his novel `The Adventures of Pinocchio`_.
+Collodi`_ in his novel `The Adventures of Pinocchio`_. 
 
 Contents
 --------
