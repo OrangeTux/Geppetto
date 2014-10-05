@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/OrangeTux/Geppetto.svg?branch=develop)](https://travis-ci.org/OrangeTux/Geppetto)
-[![Coverage Status](https://coveralls.io/repos/OrangeTux/Geppetto/badge.png)](https://coveralls.io/r/OrangeTux/Geppetto)
+[![Coverage Status](https://img.shields.io/coveralls/OrangeTux/Geppetto.svg)](https://coveralls.io/r/OrangeTux/Geppetto)
 Geppetto
 =======
 Geppetto is a home automation server. It's written for the Raspberry Pi but with
