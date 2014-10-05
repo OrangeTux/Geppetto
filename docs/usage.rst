@@ -20,4 +20,15 @@ disabled in development mode.
     >>> requests.post('http://localhost:5000/gpio/3/setpoint', headers=auth, data=data)
     <Response [200]>
 
-.. _Diaoul Sphinx theme: https://github.com/Diaoul/diaoul-sphinx-thEmes
+Pin numbering
+-------------
+Geppetto uses the `WiringPi`_'s numbering scheme for selecting GPIO pins.
+
+.. image:: static/pin_header.png
+
+Image is modification of image from `Wikipedia`_ and is available under 
+`CC BY-SA 3.0`_.
+
+.. _CC BY-SA 3.0: http://creativecommons.org/licenses/by-sa/3.0/deed.en
+.. _WiringPi: http://wiringpi.com/pins/
+.. _Wikipedia: http://upload.wikimedia.org/wikipedia/commons/6/61/Raspberry-pi-gpio.png

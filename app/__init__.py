@@ -15,14 +15,16 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 app.register_blueprint(gpio, url_prefix='/gpio')
+app.config['SQLALCHEMY_DATABASE_URI'] = \
+    'sqlite:///%s/data/geppettov.db' % _cur_path
 
 if 'GEPPETTO_ENV' in os.environ and os.environ['GEPPETTO_ENV'] == 'dev':
     app.debug = True
+    app.testing = True
     app.config['SQLALCHEMY_DATABASE_URI'] = \
         'sqlite:///%s/data/geppetto_dev.db' % _cur_path
 
 if 'GEPPETTO_ENV' in os.environ and os.environ['GEPPETTO_ENV'] == 'test':
-    app.testing = True
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
 
 db = SQLAlchemy(app)

@@ -8,7 +8,7 @@ router = Blueprint('gpio', __name__)
 
 
 @router.route('/<int:pin_nr>/setpoint', methods=['POST'])
-#@login_required
+@login_required
 def post_setpoint(pin_nr):
     """
 
@@ -42,6 +42,7 @@ def post_setpoint(pin_nr):
     :resheader Content-Type: application/json
     :statuscode 200: Success
     :statuscode 400: Request body is invalid.
+    :statuscode 403: Unauthorized.
     :statuscode 404: GPIO pin doesn't exists.
     :statuscode 422: Request body is not valid JSON.
 
