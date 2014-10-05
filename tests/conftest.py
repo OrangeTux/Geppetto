@@ -29,6 +29,7 @@ def patch(monkeypatch, tmpdir):
 
     monkeypatch.setattr('quick2wire.gpio.Pin._pin_path', mock_pin_path)
 
+
 @pytest.fixture
 def user():
     """ Add API key to db and return the key. """

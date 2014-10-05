@@ -21,6 +21,5 @@ requests==2.4.2
 six==1.8.0
 sphinxcontrib-httpdomain==1.2.1
 uWSGI==2.0.6
-wsgiref==0.1.2
 git+http://www.github.com/OrangeTux/quick2wire-python-api.git@#55
 
