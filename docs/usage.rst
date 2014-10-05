@@ -5,9 +5,9 @@ Usage
 
 Request
 -------
-The following example shows how to enable GPIO 3, or SOC GPIO 22. When you run Geppetto in 
-development mode the Authorization header redundant. Authentication has been
-disabled in development mode.
+The following example shows how to enable GPIO 3, or SOC GPIO 22. When you run 
+Geppetto in development mode the Authorization header redundant. Authentication 
+has been disabled in development mode.
 
 ::
 
