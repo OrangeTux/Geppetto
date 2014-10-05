@@ -30,7 +30,7 @@ def post_setpoint(pin_nr):
 
     .. sourcecode:: http
 
-        HTTP/1.1 200 SUCCES
+        HTTP/1.1 200 SUCCESS
         Content-Type: text/json
 
         {
