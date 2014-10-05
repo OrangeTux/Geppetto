@@ -8,7 +8,7 @@ router = Blueprint('gpio', __name__)
 
 
 @router.route('/<int:pin_nr>/setpoint', methods=['POST'])
-@login_required
+#@login_required
 def post_setpoint(pin_nr):
     """
 
@@ -56,7 +56,9 @@ def post_setpoint(pin_nr):
 
     try:
         set_pin(pin_nr, data['value'])
-    except IndexError:
+    except IndexError as e:
+        print(e)
+
         abort(404)
 
     return request.data
