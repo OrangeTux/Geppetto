@@ -8,6 +8,8 @@ pins. Geppetto provides a REST API which let you control the GPIO pins of your
 Raspberry Pi. Apps can be build on top of this API in order to control the GPIO
 pins easily.
 
+Full documentation is available on [RTD][6].
+
 Installation
 ------------
 Geppetto has been tested under Python 3.3 and Python 3.4. Geppetto uses 
@@ -61,3 +63,4 @@ or with
 [3]:https://github.com/quick2wire/quick2wire-gpio-admin
 [4]:https://github.com/quick2wire/quick2wire-python-api
 [5]:https://github.com/quick2wire/quick2wire-gpio-admin#installation
+[6]:http://geppetto-server.readthedocs.org/en/develop/
