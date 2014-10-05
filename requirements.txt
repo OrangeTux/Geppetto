@@ -1,5 +1,4 @@
 Flask==0.10.1
-Flask-Admin==1.0.8
 Flask-Login==0.2.11
 Flask-SQLAlchemy==1.0
 Jinja2==2.7.3
@@ -11,10 +10,11 @@ Sphinx==1.2.2
 WTForms==2.0
 Werkzeug==0.9.6
 docutils==0.11
-gpiocrust==1.0.0
 itsdangerous==0.24
 py==1.4.20
 pynt==0.8.0
 pytest==2.5.2
+requests==2.3.0
 six==1.7.2
 sphinxcontrib-httpdomain==1.2.1
+git+http://www.github.com/quick2wire/quick2wire-python-api.git@master

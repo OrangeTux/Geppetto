@@ -1,6 +1,6 @@
 import os
 
-os.environ['GEPETTO_ENV'] = 'test'
+os.environ['GEPPETTO_ENV'] = 'test'
 
 import pytest
 from uuid import uuid4
@@ -15,6 +15,19 @@ from app.models import User
 def setup_db():
     db.create_all()
 
+
+@pytest.fixture(scope='function', autouse=True)
+def patch(monkeypatch, tmpdir):
+    """ Monkey patch some functions of quick2wire module. """
+    monkeypatch.setattr('quick2wire.gpio.gpio_admin',
+                        lambda subcommand, pin, pull=None: None)
+
+    def mock_pin_path(self, filename):
+        f = tmpdir.join(filename)
+        f.write(0)
+        return f.strpath
+
+    monkeypatch.setattr('quick2wire.gpio.Pin._pin_path', mock_pin_path)
 
 @pytest.fixture
 def user():
