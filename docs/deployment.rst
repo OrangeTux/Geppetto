@@ -11,6 +11,12 @@ can use other web servers and other WSGI servers if you desire.
 
 Nginx
 -----
+Install Nginx.
+
+::
+    
+    $ sudo apt-get install nginx
+
 Nginx runs default as user `www-data` and so this user will run Geppetto. Add
 the user `www-data` to the group `gpio`, so it can interact with the GPIO pins
 without root permissions.
@@ -51,16 +57,20 @@ Restart Nginx.
     
 uWSGI
 -----
-uWSGI has been added as Python dependency in requirements.txt, but we also
-install it system wide. Althought this is not necessarily required, this
-system wide installation copies some uWSGI configuration in the correct folders
-of Nginx. When running Gepppetto we use uWSGI binary inside the virtualenv.
-The reason that we use this binary is that the version from PyPi is newer than
-the one from the Debian repositories.
+Install uWSGI inside your virtualenv, but install it also system wide.
+Althought the latter is not necessarily required, the system wide installation 
+copies some uWSGI configuration to the correct places. In order you install 
+uWSGI inside your virtualenv Python's development headers are required. 
 
 ::
 
-    $ sudo apt-get install uwsgi
+    $ sudo apt-get install uwsgi python-dev
+    $ pip install uwsgi
+
+When running Gepppetto we use uWSGI binary inside the virtualenv.
+The reason that we use this binary is that the version from PyPi is newer than
+the one from the Debian repositories.
+
 
 Put the following configuration inside 
 `/etc/uwsgi/apps-available/geppetto.ini`.
