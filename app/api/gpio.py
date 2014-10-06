@@ -57,9 +57,7 @@ def post_setpoint(pin_nr):
 
     try:
         set_pin(pin_nr, data['value'])
-    except IndexError as e:
-        print(e)
-
+    except IndexError:
         abort(404)
 
     return request.data
