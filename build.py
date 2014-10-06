@@ -23,7 +23,6 @@ def create_user():
     """ Create API key and add it to database. """
     key = str(uuid4()).encode('utf-8')
     u = User(api_key=key)
-
     db.session.add(u)
     db.session.commit()
 

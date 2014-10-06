@@ -3,7 +3,6 @@ import os
 os.environ['GEPPETTO_ENV'] = 'test'
 
 import pytest
-from uuid import uuid4
 import base64
 
 from app import app as application
@@ -33,9 +32,7 @@ def patch(monkeypatch, tmpdir):
 @pytest.fixture
 def user():
     """ Add API key to db and return the key. """
-    key = str(uuid4()).encode('utf-8')
-
-    u = User(api_key=key)
+    u = User(api_key='c7dc072d-6c5d-4b16-8189-6f95147275e5')
     db.session.add(u)
     db.session.commit()
 
@@ -45,7 +42,7 @@ def user():
 @pytest.fixture
 def auth_header(user):
     """ Return Authorization header. """
-    return {'Authorization': base64.b64encode(user.api_key)}
+    return {'Authorization': base64.b64encode(user.api_key.encode('utf-8'))}
 
 
 @pytest.fixture
