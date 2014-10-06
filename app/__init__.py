@@ -11,21 +11,24 @@ _cur_path = os.path.dirname(os.path.abspath(__name__))
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-login_manager = LoginManager()
-login_manager.init_app(app)
-
 app.register_blueprint(gpio, url_prefix='/gpio')
+app.debug = True
 app.config['SQLALCHEMY_DATABASE_URI'] = \
     'sqlite:///%s/data/geppettov.db' % _cur_path
 
 if 'GEPPETTO_ENV' in os.environ and os.environ['GEPPETTO_ENV'] == 'dev':
-    app.debug = True
-    app.testing = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = \
-        'sqlite:///%s/data/geppetto_dev.db' % _cur_path
+    app.config.update(
+        DEBUG=True,
+        LOGIN_DISABLED=True,
+        TESTING=True,
+        SQLALCHEMY_DATABASE_URI='sqlite:///%s/data/geppetto_dev.db' % _cur_path
+    )
 
 if 'GEPPETTO_ENV' in os.environ and os.environ['GEPPETTO_ENV'] == 'test':
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
+
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 db = SQLAlchemy(app)
 
