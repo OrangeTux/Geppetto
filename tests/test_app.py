@@ -40,8 +40,15 @@ def test_load_user_from_request_with_non_existing_api_key(client):
 
 
 def test_load_user_from_request_with_invalid_api_key(client, user):
-    """ Test authentication with a non existing api key. """
+    """ Test authentication with a invalid existing api key. """
     with client as cl:
+        # Should raise UnicodeError.
         res = cl.get('/test_authentication',
                      headers={'Authorization': user.api_key})
+        assert res.status_code == 401
+
+        # Should raise TypeError
+        res = cl.get('/test_authentication',
+                     headers={'Authorization': 'invalid'})
+
         assert res.status_code == 401

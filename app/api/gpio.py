@@ -1,5 +1,5 @@
 import json
-from flask import Blueprint, abort, request
+from flask import Blueprint, abort, request, jsonify
 from flask.ext.login import login_required
 
 from app.tasks import set_pin
@@ -60,4 +60,4 @@ def post_setpoint(pin_nr):
     except IndexError:
         abort(404)
 
-    return request.data
+    return jsonify(data)
