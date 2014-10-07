@@ -1,4 +1,5 @@
 import os
+from base64 import b64encode
 
 try:
     from importlib import reload
@@ -34,7 +35,7 @@ def test_load_user_from_request_with_non_existing_api_key(client):
     """ Test authentication with a non existing api key. """
     with client as cl:
         res = cl.get('/test_authentication',
-                     headers={'Authorization': 'invalid'})
+                     headers={'Authorization': b64encode(b'invalid')})
         assert res.status_code == 401
 
 

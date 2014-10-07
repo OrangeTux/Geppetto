@@ -3,7 +3,7 @@ import os
 os.environ['GEPPETTO_ENV'] = 'test'
 
 import pytest
-import base64
+from base64 import b64encode
 
 from app import app as application
 from app import db
@@ -42,7 +42,7 @@ def user():
 @pytest.fixture
 def auth_header(user):
     """ Return Authorization header. """
-    return {'Authorization': base64.b64encode(user.api_key.encode('utf-8'))}
+    return {'Authorization': b64encode(user.api_key.encode('utf-8'))}
 
 
 @pytest.fixture
