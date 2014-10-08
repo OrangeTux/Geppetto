@@ -1,4 +1,5 @@
 import os
+from base64 import b64encode
 
 try:
     from importlib import reload
@@ -34,13 +35,31 @@ def test_load_user_from_request_with_non_existing_api_key(client):
     """ Test authentication with a non existing api key. """
     with client as cl:
         res = cl.get('/test_authentication',
-                     headers={'Authorization': 'invalid'})
+                     headers={'Authorization': b64encode(b'invalid')})
         assert res.status_code == 401
 
 
 def test_load_user_from_request_with_invalid_api_key(client, user):
-    """ Test authentication with a non existing api key. """
+    """ Test authentication with a invalid existing api key. """
     with client as cl:
+        # Should raise UnicodeError.
         res = cl.get('/test_authentication',
                      headers={'Authorization': user.api_key})
         assert res.status_code == 401
+
+        # Should raise TypeError
+        res = cl.get('/test_authentication',
+                     headers={'Authorization': 'invalid'})
+
+        assert res.status_code == 401
+
+
+def test_access_control_headers(client, auth_header):
+    """ Test if correct Access-Control-* headers are returned. """
+    with client as cl:
+        res = cl.get('/test_authentication',
+                     headers=auth_header)
+
+        assert res.headers.get('Access-Control-Allow-Headers') ==\
+            'Authorization, Content-Type'
+        assert res.headers.get('Access-Control-Allow-Origin') == '*'

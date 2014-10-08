@@ -1,5 +1,4 @@
 import json
-import pytest
 
 
 def test_post_setpoint_422(client, auth_header):
@@ -26,9 +25,13 @@ def test_post_setpoint_400(client, auth_header):
         assert res.status_code == 400
 
 
-@pytest.mark.skipif('os.uname()[4][:3] != "arm"')
 def test_post_setpoint_404(client, auth_header, monkeypatch):
     """ Test for 404 response code. """
+    def mock(*args):
+        raise IndexError
+
+    monkeypatch.setattr('app.api.gpio.set_pin', mock)
+
     with client as cl:
         res = cl.post('/gpio/29/setpoint',
                       headers=auth_header,
@@ -39,11 +42,13 @@ def test_post_setpoint_404(client, auth_header, monkeypatch):
 
 def test_post_setpoint_200(client, auth_header):
     """ Test for 200 response code. """
-    data = json.dumps({'value': 1})
+    data = {'value': 1}
+
     with client as cl:
         res = cl.post('/gpio/3/setpoint',
                       headers=auth_header,
-                      data=data)
+                      data=json.dumps(data))
 
         assert res.status_code == 200
-        assert res.data.decode('utf8') == data
+        assert res.headers.get('Content-Type') == 'application/json'
+        assert json.loads(res.data.decode('utf8')) == data
