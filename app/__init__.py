@@ -4,6 +4,7 @@ import binascii
 from flask import Flask, Response
 from flask.ext.login import LoginManager, login_required
 from flask.ext.sqlalchemy import SQLAlchemy
+from flask.ext.cors import CORS
 
 from app.api import gpio
 
@@ -31,6 +32,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 db = SQLAlchemy(app)
+CORS(app, headers='Content-Type')
 
 from app.models import User
 
