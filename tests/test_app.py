@@ -52,3 +52,14 @@ def test_load_user_from_request_with_invalid_api_key(client, user):
                      headers={'Authorization': 'invalid'})
 
         assert res.status_code == 401
+
+
+def test_access_control_headers(client, auth_header):
+    """ Test if correct Access-Control-* headers are returned. """
+    with client as cl:
+        res = cl.get('/test_authentication',
+                     headers=auth_header)
+
+        assert res.headers.get('Access-Control-Allow-Headers') ==\
+            'Authorization, Content-Type'
+        assert res.headers.get('Access-Control-Allow-Origin') == '*'
