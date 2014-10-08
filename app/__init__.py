@@ -32,7 +32,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 
 db = SQLAlchemy(app)
-CORS(app, headers='Content-Type')
+CORS(app, headers=['Content-Type', 'Authorization'])
 
 from app.models import User
 
