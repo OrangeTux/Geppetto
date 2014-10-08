@@ -51,6 +51,7 @@ def test_post_setpoint_200(client, auth_header):
 
         assert res.status_code == 200
         assert res.headers.get('Content-Type') == 'application/json'
-        assert res.headers.get('Access-Control-Allow-Headers') == 'Content-Type'
+        assert res.headers.get('Access-Control-Allow-Headers') ==\
+            'Content-Type'
         assert res.headers.get('Access-Control-Allow-Origin') == '*'
         assert json.loads(res.data.decode('utf8')) == data
