@@ -1,5 +1,6 @@
 Flask==0.10.1
 Flask-Admin==1.0.8
+Flask-Cors==1.9.0
 Flask-Login==0.2.11
 Flask-SQLAlchemy==2.0
 Jinja2==2.7.3
