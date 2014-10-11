@@ -6,14 +6,12 @@ from flask.ext.login import LoginManager, login_required
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.cors import CORS
 
-from app.api import gpio
 
 _cur_path = os.path.dirname(os.path.abspath(__name__))
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-app.register_blueprint(gpio, url_prefix='/gpio')
 app.config['SQLALCHEMY_DATABASE_URI'] = \
     'sqlite:///%s/data/geppettov.db' % _cur_path
 
@@ -25,14 +23,14 @@ if 'GEPPETTO_ENV' in os.environ and os.environ['GEPPETTO_ENV'] == 'dev':
         SQLALCHEMY_DATABASE_URI='sqlite:///%s/data/geppetto_dev.db' % _cur_path
     )
 
-if 'GEPPETTO_ENV' in os.environ and os.environ['GEPPETTO_ENV'] == 'test':
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
-
 login_manager = LoginManager()
 login_manager.init_app(app)
 
 db = SQLAlchemy(app)
 CORS(app, headers=['Content-Type', 'Authorization'])
+
+from app.api import gpio
+app.register_blueprint(gpio, url_prefix='/gpio')
 
 from app.models import User
 
