@@ -1,11 +1,11 @@
-import os
-
-os.environ['GEPPETTO_ENV'] = 'test'
-
 import pytest
 from base64 import b64encode
 
 from app import app as application
+application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite://'
+application.config['TESTING'] = True
+application.config['MOCK_PINS'] = True
+
 from app import db
 from app.models import User
 
@@ -13,20 +13,6 @@ from app.models import User
 @pytest.fixture(scope='module', autouse=True)
 def setup_db():
     db.create_all()
-
-
-@pytest.fixture(scope='function', autouse=True)
-def patch(monkeypatch, tmpdir):
-    """ Monkey patch some functions of quick2wire module. """
-    monkeypatch.setattr('quick2wire.gpio.gpio_admin',
-                        lambda subcommand, pin, pull=None: None)
-
-    def mock_pin_path(self, filename):
-        f = tmpdir.join(filename)
-        f.write(0)
-        return f.strpath
-
-    monkeypatch.setattr('quick2wire.gpio.Pin._pin_path', mock_pin_path)
 
 
 @pytest.fixture

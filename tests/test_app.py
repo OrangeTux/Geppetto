@@ -1,4 +1,5 @@
 import os
+import pytest
 from base64 import b64encode
 
 try:
@@ -12,14 +13,11 @@ except ImportError:
 import app
 
 
-def test_app():
-    """ Test configuration of app in different environment. """
-    assert app.app.debug is False
-
-    os.environ['GEPPETTO_ENV'] = 'dev'
-    reload(app)
-    assert app.app.debug is True
+def test_loading_of_config(tmpdir):
+    """ Test if config is loaded when GEPPETTO_ENV is set. """
     os.environ['GEPPETTO_ENV'] = 'test'
+    with pytest.raises(ImportError):
+        reload(app)
 
 
 def test_load_user_from_request(client, auth_header):

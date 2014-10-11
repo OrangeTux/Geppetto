@@ -30,7 +30,7 @@ def test_post_setpoint_404(client, auth_header, monkeypatch):
     def mock(*args):
         raise IndexError
 
-    monkeypatch.setattr('app.api.gpio.set_pin', mock)
+    monkeypatch.setattr('app.api.gpio.set_pin_value', mock)
 
     with client as cl:
         res = cl.post('/gpio/29/setpoint',
