@@ -1,4 +1,9 @@
 import os
+import sys
+
+_cur_path = os.path.dirname(os.path.abspath(__name__))
+sys.path.append(os.path.join(_cur_path, '../', 'conf'))
+
 import base64
 import binascii
 from flask import Flask, Response
@@ -6,22 +11,8 @@ from flask.ext.login import LoginManager, login_required
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.cors import CORS
 
-
-_cur_path = os.path.dirname(os.path.abspath(__name__))
-
 app = Flask(__name__)
-app.secret_key = os.urandom(24)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = \
-    'sqlite:///%s/data/geppettov.db' % _cur_path
-
-if 'GEPPETTO_ENV' in os.environ and os.environ['GEPPETTO_ENV'] == 'dev':
-    app.config.update(
-        DEBUG=True,
-        LOGIN_DISABLED=True,
-        TESTING=True,
-        SQLALCHEMY_DATABASE_URI='sqlite:///%s/data/geppetto_dev.db' % _cur_path
-    )
+app.config.from_object('conf.default')
 
 login_manager = LoginManager()
 login_manager.init_app(app)
