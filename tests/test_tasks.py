@@ -1,6 +1,6 @@
 import mock
 from quick2wire.gpio import Pin, Out
-from app.tasks import set_pin, get_pin
+from app.tasks import set_pin_value, get_pin
 from app import app
 
 
@@ -20,6 +20,6 @@ def test_get_pin_with_mocking_pins():
     assert isinstance(get_pin(1, Out), mock.MagicMock)
 
 
-def test_set_pin():
-    assert set_pin(3, 0) is 0
-    assert set_pin(3, 1) is 1
+def test_set_pin_value():
+    assert set_pin_value(3, 0) is 0
+    assert set_pin_value(3, 1) is 1

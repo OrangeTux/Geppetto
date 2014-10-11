@@ -26,7 +26,7 @@ def get_pin(pin_nr, direction):
     return pin
 
 
-def set_pin(pin_nr, value):
+def set_pin_value(pin_nr, value):
     """ Write HIGH or LOW to GPIO pin.
 
     :param pin_nr: BOARD pin number.

@@ -2,7 +2,7 @@ import json
 from flask import Blueprint, abort, request, jsonify
 from flask.ext.login import login_required
 
-from app.tasks import set_pin
+from app.tasks import set_pin_value
 
 router = Blueprint('gpio', __name__)
 
@@ -56,7 +56,7 @@ def post_setpoint(pin_nr):
         abort(400)
 
     try:
-        set_pin(pin_nr, data['value'])
+        set_pin_value(pin_nr, data['value'])
     except IndexError:
         abort(404)
 
