@@ -14,6 +14,9 @@ from flask.ext.cors import CORS
 app = Flask(__name__)
 app.config.from_object('conf.default')
 
+if 'GEPPETTO_ENV' in os.environ:
+    app.config.from_object('conf.%s' % os.environ['GEPPETTO_ENV'])
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 

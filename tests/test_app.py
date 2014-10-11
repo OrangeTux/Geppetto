@@ -1,4 +1,23 @@
+import os
+import pytest
 from base64 import b64encode
+
+try:
+    from importlib import reload
+except ImportError:
+    try:
+        from imp import reload
+    except ImportError:
+        pass
+
+import app
+
+
+def test_loading_of_config(tmpdir):
+    """ Test if config is loaded when GEPPETTO_ENV is set. """
+    os.environ['GEPPETTO_ENV'] = 'test'
+    with pytest.raises(ImportError):
+        reload(app)
 
 
 def test_load_user_from_request(client, auth_header):
