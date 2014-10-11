@@ -19,7 +19,7 @@ def get_pin(pin_nr, direction):
     """
     pin = pins.pin(pin_nr, direction=direction)
     if not os.path.exists(pin._pin_path()) and\
-        app.config.get('MOCK_PINS', False):
+            app.config.get('MOCK_PINS', False):
 
         return mock.MagicMock()
 
