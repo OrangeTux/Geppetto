@@ -25,6 +25,7 @@ Contents
     quickstart
     deployment
     usage
+    configuration
     developing
     gpio
 
