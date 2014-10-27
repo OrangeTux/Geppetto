@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/OrangeTux/Geppetto.svg?branch=develop)](https://travis-ci.org/OrangeTux/Geppetto)
 [![Coverage Status](https://img.shields.io/coveralls/OrangeTux/Geppetto.svg)](https://coveralls.io/r/OrangeTux/Geppetto)
+[![Code Health](https://landscape.io/github/OrangeTux/Geppetto/master/landscape.png)](https://landscape.io/github/OrangeTux/Geppetto/master)
 Geppetto
 =======
 Geppetto exposes the GPIO pins of the Raspberry Pi using a HTTP API. Geppetto
@@ -17,6 +18,6 @@ Or in Python:
     >>> request.post('http://geppet.to/gpio/1/setpoint', data=json.dumps(data), headers=header}
     Response[200]
 
-Full documentation is available on [RTD][6].
+Full documentation is available on [RTD][1].
 
-[6]:http://geppetto-server.readthedocs.org/en/develop/
+[1]:http://geppetto-server.readthedocs.org/en/develop/

@@ -1,0 +1,3 @@
+max-line-length: 79
+ignore-paths:
+    - docs/_themes
